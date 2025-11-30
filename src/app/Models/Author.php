@@ -11,4 +11,9 @@ class Author extends Model
 
     //データを書き換え可能に設定(不可:$guarded)
     protected $fillable = ['name', 'age', 'nationality'];
+    public function getDetail()
+    {
+        $txt = 'ID:'.$this->id.' '.$this->name.'('.$this->age.'才'.')'.$this->nationality;
+        return $txt;
+    }
 }
