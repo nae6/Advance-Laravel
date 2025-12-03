@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Author;
+use App\Http\Requests\AuthorRequest;
 
 class AuthorController extends Controller
 {
@@ -19,7 +20,7 @@ class AuthorController extends Controller
         return view('add');
     }
     //追加機能
-    public function create(Request $request)
+    public function create(AuthorRequest $request)
     {
         $form = $request->all();
         Author::create($form);
@@ -32,7 +33,7 @@ class AuthorController extends Controller
         return view('edit', ['form' => $author]);
     }
     //更新機能
-    public function update(Request $request)
+    public function update(AuthorRequest $request)
     {
         $form = $request->all();
         unset($form['_token']);
@@ -75,5 +76,10 @@ class AuthorController extends Controller
             'item' => $author,
         ];
         return view('author.binds', $data);
+    }
+    //エラーの時に表示する画面の設定
+    public function verror()
+    {
+        return view('verror');
     }
 }
