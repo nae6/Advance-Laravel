@@ -42,14 +42,12 @@
             <td><input type="text" name="name"></td>
         </tr>
         @error('age')
+        @foreach ($errors->get('age', []) as $message)
         <tr>
             <th style="background-color: red">ERROR</th>
-            <td>
-                @foreach ($errors->get('age') as $message)
-                    {{$message}}<br>
-                @endforeach
-            </td>
+            <td>{{$message}}</td>
         </tr>
+        @endforeach
         @endif
         <tr>
             <th>age</th>
